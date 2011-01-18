@@ -14,7 +14,7 @@ class MobileExtension < Spree::Extension
   
   def activate
     Spree::BaseController.send(:include, Spree::Controllers::BaseControllerWithMobileFu)
-    
+    ProductsController.send(:include, Spree::Controllers::ProductsControllerWithMobileResponse)
     # make your helper avaliable in all views
     # Spree::BaseController.class_eval do
     #   helper YourHelper

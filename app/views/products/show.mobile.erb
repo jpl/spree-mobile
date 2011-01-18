@@ -1,0 +1,9 @@
+<h1><%= @product.name %></h1>
+
+<div class="ui-grid-a">
+	<div class="ui-block-a">
+	    <%= render 'image' -%>
+	    <%= render 'thumbnails', :product => @product -%>
+	</div>
+	<div class="ui-block-b"><strong>I'm Block B</strong> and text inside will wrap</div>
+</div><!-- /grid-a -->
