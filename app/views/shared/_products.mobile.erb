@@ -1,0 +1,36 @@
+<%
+  paginated_products = Spree::Config.searcher.products if params.key?(:keywords)
+  paginated_products ||= products
+%>
+<% if products.empty? %>
+  <%= t(:no_products_found) %>
+<% elsif params.key?(:keywords) %>
+  <h3><%= t(:search_results, :keywords => h(params[:keywords])) %></h3>
+<% end %>
+ 
+<% if products.any? %>
+<ul data-role="listview">
+  <% products.each do |product| %>
+    <% if Spree::Config[:show_zero_stock_products] || product.has_stock? %>
+
+	<li>
+		<%= small_image(product, :class => "ui-li-thumb") %>
+		<h3>
+			<%= link_to product.name, product, :class => 'ui-link-inherit' %>
+		</h3>
+		<p>
+			<%= product_price(product) %>
+		</p>
+	</li>
+    <% end %>
+  <% end %>
+</ul>
+<% end %>
+<% if paginated_products.respond_to?(:total_pages)
+      params.delete(:search)
+      params.delete(:taxon)
+
+%><%= will_paginate(paginated_products,
+                    :previous_label => "&#171; #{t('previous')}",
+                    :next_label => "#{t('next')} &#187;") %>
+<% end -%>

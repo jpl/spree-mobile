@@ -1,0 +1,9 @@
+<% if @taxon.children.empty? || !params[:keywords].blank? %>
+  <% hook :taxon_products_mobile do %>
+    <%= render :partial => "shared/products", :locals => {:products => @products, :taxon => @taxon } %>
+  <% end %>
+<% else %>
+  <% hook :taxon_children_mobile do %>
+    <%= render :partial => "taxon", :collection => @taxon.children %>
+  <% end %>
+<% end %>
