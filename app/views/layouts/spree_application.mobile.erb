@@ -1,29 +1,22 @@
 <!DOCTYPE html> 
 <html> 
-	<head> 
-		<title><%= title %></title> 
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
-		<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
-		<%= meta_data_tags %> 
-	</head> 
+	<head>
+		<%= render :partial => "shared/head" %>
+	</head>
 	<body> 
 		<div data-role="page">
-			<div data-role="header">
-				<h1><%= title %></h1>
-			</div><!-- /header -->
+			<div id="header" data-role="header" class="container_bg">
+				<h1>
+					<%= link_to title, root_path %>
+				</h1>
+				<%= render 'shared/nav_bar' %>
+		  	</div>
 
 			<div data-role="content">
 				<%= yield %>
-				<p>Page content goes here.</p>
 			</div><!-- /content -->
-
-			<div data-role="footer" class="ui-bar">
-				<a href="index.html" data-role="button" data-icon="delete">Remove</a>
-				<a href="index.html" data-role="button" data-icon="plus">Add</a>
-				<a href="index.html" data-role="button" data-icon="arrow-u">Up</a>
-				<a href="index.html" data-role="button" data-icon="arrow-d">Down</a>
-			</div>
+			
+			<%= render :partial => "shared/footer" %>
 		</div><!-- /page -->
 	</body>
 </html>

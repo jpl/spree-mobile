@@ -14,13 +14,11 @@
     <% if Spree::Config[:show_zero_stock_products] || product.has_stock? %>
 
 	<li>
-		<%= small_image(product, :class => "ui-li-thumb") %>
-		<h3>
-			<%= link_to product.name, product, :class => 'ui-link-inherit' %>
-		</h3>
-		<p>
+		<% link_to product, :class => 'ui-link-inherit' do %>
+			<%= small_image(product, :class => "ui-li-thumb") %>
+			<%= product.name %><br/>
 			<%= product_price(product) %>
-		</p>
+		<% end %>
 	</li>
     <% end %>
   <% end %>

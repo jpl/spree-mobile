@@ -1,0 +1,6 @@
+<% form_tag products_url, :method => :get do %>
+	<div data-role="fieldcontain">
+	    Search:
+	    <input type="search" name="keywords" id="keywords" value="<%= params[:keywords] %>" data-theme="a" size="10" />
+	</div>
+<% end %>

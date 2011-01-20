@@ -1,0 +1,14 @@
+<div data-role="footer" class="ui-bar" id="footer">
+  <div class="left">
+    <% hook :mobile_footer_left do -%>
+		<%= t("powered_by") %> <a href="http://spreecommerce.com/">Spree</a>
+		<%= render 'shared/login_bar' %>
+    <% end -%>
+  </div>
+  <div class="right">
+    <%= hook :mobile_footer_right %>
+  </div>
+</div>   
+<%= "" 
+# render 'shared/google_analytics' 
+%>
